@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CountrySampleMvvm.MainPage">
+   
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Label FontAttributes="Bold" Text="List of some countries" HorizontalOptions="CenterAndExpand"/>
+                <Picker Title="Select country"
+                        ItemsSource="{Binding Countries}" ItemDisplayBinding="{Binding cName}"
+                        SelectedItem="{Binding SelectedCountry}" SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+                <Image Source="{Binding SelectedCountry.cImgUrl}"/>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="25" Text="{Binding SelectedCountry.cName}"/>
+                <Label Text="{Binding SelectedCountry.cDescription}"/>
+                <Label Text="{Binding SelectedCountry.cLocation}"/>
+                <Picker Title="Select City" x:Name="mCityPicker"
+                        ItemsSource="{Binding SelectedCountry.cCity}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedCity}" />
+                <Label x:Name="mLabel" FontSize="30" HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center" Text="{Binding SelectedCity.RegNumber}"/>
+
+                <!--<Picker Title="Select Region" x:Name="mRegionPicker" ItemsSource="" ItemDisplayBinding=""/>-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
